@@ -14,6 +14,4 @@ jobs:
         with:
           project-url: https://github.com/orgs/bsv-blockchain-woc/projects/2
           github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
-          labeled: bug, documentation, enhancement
-          label-operator: OR
 EOF
