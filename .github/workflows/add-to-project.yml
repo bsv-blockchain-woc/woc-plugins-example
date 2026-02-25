@@ -1,11 +1,9 @@
-cat > add-to-project.yml << 'EOF'
 name: Add to Project
 on:
   issues:
     types: [opened, reopened]
   pull_request:
     types: [opened, reopened]
-
 jobs:
   add-to-project:
     runs-on: ubuntu-latest
@@ -14,4 +12,3 @@ jobs:
         with:
           project-url: https://github.com/orgs/bsv-blockchain-woc/projects/2
           github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
-EOF
