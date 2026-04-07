@@ -19,7 +19,7 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "🆕 New Issue Created"
+                    "text": "New Issue Created"
                   }
                 },
                 {
@@ -39,14 +39,14 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*<${{ github.event.issue.html_url }}|#${{ github.event.issue.number }}: ${{ github.event.issue.title }}>*"
+                    "text": ${{ toJSON(format('*<{0}|#{1}: {2}>*', github.event.issue.html_url, github.event.issue.number, github.event.issue.title)) }}
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "${{ github.event.issue.body || '_No description provided_' }}"
+                    "text": ${{ toJSON(github.event.issue.body || '_No description provided_') }}
                   }
                 },
                 {
@@ -54,7 +54,7 @@ jobs:
                   "fields": [
                     {
                       "type": "mrkdwn",
-                      "text": "*Labels:*\n${{ join(github.event.issue.labels.*.name, ', ') || '_None_' }}"
+                      "text": ${{ toJSON(format('*Labels:*\n{0}', join(github.event.issue.labels.*.name, ', ') || '_None_')) }}
                     }
                   ]
                 },
@@ -66,7 +66,7 @@ jobs:
                   "elements": [
                     {
                       "type": "mrkdwn",
-                      "text": "📋 <https://github.com/orgs/bsv-blockchain-woc/projects/2|View all issues across 60+ WOC repos in the Project Board>"
+                      "text": "View all issues across 60+ WOC repos in the <https://github.com/orgs/bsv-blockchain-woc/projects/2|Project Board>"
                     }
                   ]
                 }
